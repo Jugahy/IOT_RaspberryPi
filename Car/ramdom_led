@@ -1,0 +1,44 @@
+import random as ra
+import RPi.GPIO as gpio
+import time
+
+led1 = 26
+led2 = 16
+led3 = 20
+led4 = 21
+
+gpio.setmode(gpio.BCM)
+gpio.setup(led1, gpio.OUT)
+gpio.setup(led2, gpio.OUT)
+gpio.setup(led3, gpio.OUT)
+gpio.setup(led4, gpio.OUT)
+
+try:
+        while True:
+          a = ra.randrange(0, 4)
+          if a == 0:
+            gpio.output(led1, gpio.HIGH)
+            time.sleep(0.2)
+            gpio.output(led1, gpio.LOW)
+            time.sleep(0.2)
+          elif a == 1:
+            gpio.output(led2, gpio.HIGH)
+            time.sleep(0.2)
+            gpio.output(led2, gpio.LOW)
+            time.sleep(0.2)
+          elif a == 2:
+            gpio.output(led3, gpio.HIGH)
+            time.sleep(0.2)
+            gpio.output(led3, gpio.LOW)
+            time.sleep(0.2)
+          elif a == 3:
+            gpio.output(led4, gpio.HIGH)
+            time.sleep(0.2)
+            gpio.output(led4, gpio.LOW)
+            time.sleep(0.2)
+            
+
+except KeyboardInterrupt:
+        pass
+
+gpio.cleanup()
