@@ -1,0 +1,38 @@
+import RPi.GPIO as gpio
+import time
+
+led1 = 26
+led2 = 16
+led3 = 20
+led4 = 21
+
+gpio.setmode(gpio.BCM)
+gpio.setwarnings(False)
+gpio.setup(led1, gpio.OUT)
+
+p = gpio.PWM(led1, 50)
+p.start(0)
+
+try:
+  while True:
+    p.ChangeDutyCycle(100)
+    time.sleep(1)
+    p.ChangeDutyCycle(75)
+    time.sleep(1)
+    p.ChangeDutyCycle(50)
+    time.sleep(1)
+    p.ChangeDutyCycle(25)
+    time.sleep(1)
+    p.ChangeDutyCycle(0)
+    time.sleep(1)
+    #for dc in range(0, 101, 5):
+      #p.ChangeDutyCycle(dc)
+      #time.sleep(0.05)
+    #for dc in range(100, -1, -5):
+      #p.ChangeDutyCycle(dc)
+      #time.sleep(0.05)
+except KeyboardInterrupt:
+  pass
+
+p.stop()
+gpio.cleanup()
