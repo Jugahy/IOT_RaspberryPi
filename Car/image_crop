@@ -1,0 +1,23 @@
+import cv2
+
+def main():
+  camera = cv2.VideoCapture(-1)
+  camera.set(3,640)
+  camera.set(4,480)
+  
+  while(camera.isOpened()):
+    ret, frame = camera.read()
+    frame = cv2.flip(image,-1)  
+    cv2.imshow("normal", image)
+    
+    crop_img = frame[60:120, 0:160]  # 180도 회전으로 보기 편한 이미지를 내가 원하는 부분만 보기 위해 자름 그리고 자른걸 출
+    cv2.imshow("normal", crop_img)
+    
+    if cv2.waitKey(1) == ord("q"):
+      break
+  
+  cv2.destroyAllWindow()
+  
+
+if __name__ == "__main__":
+  main()
