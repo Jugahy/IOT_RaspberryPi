@@ -1,0 +1,19 @@
+import cv2
+
+def main():
+  # basic control of camera
+  camera = cv2.VideoCapture(-1)
+  camera.set(3,640)  # 가로
+  camera.set(4,480)  # 세로
+  
+  while(camera.isOpened()):  # 카메라가 실행중인 동안에
+    _, image = camera.read()  # 카메라의 프레임 값을 읽어 image에 넣는다.
+    cv2.imshow("camera test", image)  # 새 창에 image를 보여준다.
+    
+    if cv2.waitKey(1) == ord("q"):  # 키보드의 값을 읽는다. q를 받으면 프로그램 종료
+      break
+  
+  cv2.destroyAllWindows()  # 모든 cv2 창 닫기
+  
+if __name__ == "__main__":
+  main()
